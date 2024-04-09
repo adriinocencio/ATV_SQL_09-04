@@ -34,8 +34,8 @@ SELECT SUM(idade) AS soma_idades
 FROM alunos
 WHERE sexo = 'M';
 
-----ATIVIDADE_4
 
+----ATIVIDADE_4
 -- calcular média dos alunos com 'b' no nome
 SELECT AVG(idade) AS media_idade
 FROM alunos
@@ -70,4 +70,35 @@ WHERE nome LIKE '%a%' AND sexo = 'F';
 SELECT SUM(idade) AS soma_idades
 FROM alunos
 WHERE nome LIKE '%f%' AND sexo = 'M';
+
+
+----ATIVIDADE_5
+-- idade máxima dos alunos com 'c' no nome (exceto seu próprio nome)
+SELECT MAX(idade) AS idade_maxima
+FROM alunos
+WHERE nome LIKE '%c%' AND sexo = 'M' AND nome != 'Adrielly';
+
+-- idade mínima dos alunos e alunas com 'f' no nome (exceto seu próprio nome)
+SELECT MIN(idade) AS idade_minima
+FROM alunos
+WHERE nome LIKE '%f%' AND nome != 'Adrielly';
+
+-- idade máxima das alunas que começam com 'g' (exceto seu próprio nome)
+SELECT MAX(idade) AS idade_maxima
+FROM alunos
+WHERE nome LIKE '%G%' AND nome != 'Adrielly';
+
+-- idade mínima dos alunos que começam com 'r' (exceto seu próprio nome)
+SELECT MIN(idade) AS idade_minima
+FROM alunos
+WHERE nome LIKE '%R%' AND nome != 'Adrielly';
+
+-- soma das idades máxima e mínima dos alunos (exceto seu próprio nome)
+SELECT (SELECT MAX(idade) FROM alunos WHERE nome != 'Adrielly') +
+       (SELECT MIN(idade) FROM alunos WHERE nome != 'Adrielly') AS soma_idades;
+       
+-- selecionar alunas q tem 'a' no nome (exceto seu próprio nome)       
+SELECT *
+FROM alunos
+WHERE nome LIKE '%a%' AND sexo = 'F' AND != 'Adrielly';
 ```
