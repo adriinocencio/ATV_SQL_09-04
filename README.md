@@ -1,7 +1,19 @@
 # ATV_SQL_09-04
 
 ```sql
-----ATIVIDADE_3
+-- --ATIVIDADE_1 (SALARIOS)
+SELECT MAX(SALARIO) AS MAIOR_SAL_TODOS
+FROM SALARIOS
+WHERE PROFISSAO IN ('Ator', 'Músico');
+
+
+-- --ATIVIDADE_2 (SALARIOS)
+SELECT MAX(SALARIO) AS MAIOR_SAL_TODOS
+FROM SALARIOS
+WHERE PROFISSAO IN ('Ator', 'Músico', 'Professor');
+
+
+-- --ATIVIDADE_3 (ALUNOS)
 -- adicionar coluna 'sexo' e atribuir os devidos valores a cada aluno
 UPDATE alunos
 SET sexo = 'M';
@@ -35,7 +47,7 @@ FROM alunos
 WHERE sexo = 'M';
 
 
-----ATIVIDADE_4
+-- --ATIVIDADE_4 (ALUNOS)
 -- calcular média dos alunos com 'b' no nome
 SELECT AVG(idade) AS media_idade
 FROM alunos
@@ -72,7 +84,7 @@ FROM alunos
 WHERE nome LIKE '%f%' AND sexo = 'M';
 
 
-----ATIVIDADE_5
+-- --ATIVIDADE_5 (ALUNOS)
 -- idade máxima dos alunos com 'c' no nome (exceto seu próprio nome)
 SELECT MAX(idade) AS idade_maxima
 FROM alunos
@@ -100,5 +112,6 @@ SELECT (SELECT MAX(idade) FROM alunos WHERE nome != 'Adrielly') +
 -- selecionar alunas q tem 'a' no nome (exceto seu próprio nome)       
 SELECT *
 FROM alunos
-WHERE nome LIKE '%a%' AND sexo = 'F' AND != 'Adrielly';
+WHERE nome LIKE '%a%' AND sexo = 'F' AND nome != 'Adrielly'
+LIMIT 25;
 ```
